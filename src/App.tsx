@@ -219,7 +219,7 @@ function TabTriggerContent({
           closeTab.onClose();
         }}
         className={cn(
-          "w-5 h-5 cursor-pointer hidden group-hover:flex justify-center items-center  rounded-md text-black/40 hover:text-black/80 hover:border hover-border-black ",
+          "w-5 h-5 cursor-pointer hidden group-hover:flex justify-center items-center rounded-md text-black/40 hover:text-black/80 hover:border hover-border-black ",
           {
             "group-hover:hidden": closeTab.disable,
           }
