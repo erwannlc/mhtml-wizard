@@ -144,7 +144,9 @@ export default function App() {
             {pageData.map((page, i) => (
               <TabsTrigger
                 value={page.id.toString()}
-                className="group hover:bg-background cursor-pointer pb-4"
+                className={cn("group hover:bg-background cursor-pointer pb-4", {
+                  "cursor-auto": disableCloseTab,
+                })}
                 key={page.id}
                 title={page.fileData?.filename}
               >
