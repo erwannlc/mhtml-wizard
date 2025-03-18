@@ -182,6 +182,54 @@ export default function App() {
   );
 }
 
+function TabTriggerContent({
+  page,
+  text,
+  closeTab,
+}: {
+  page: PageData;
+  text: string;
+  closeTab: {
+    disable: boolean;
+    title: string;
+    onClose: () => void;
+  };
+}) {
+  const { fileData } = page;
+  return (
+    <>
+      <span
+        className={cn(
+          "group-hover:hidden w-5 h-5 flex flex-1 justify-center items-center",
+          { "group-hover:flex": closeTab.disable }
+        )}
+      >
+        {fileData?.faviconUrl ? (
+          <img src={fileData?.faviconUrl} className="w-5 h-5" />
+        ) : (
+          <WorldHeroicon className="w-5 h-5 text-black/30" strokeWidth={1} />
+        )}
+      </span>
+      <span
+        title={closeTab.title}
+        onClick={e => {
+          e.stopPropagation();
+          closeTab.onClose();
+        }}
+        className={cn(
+          "w-5 h-5 cursor-pointer hidden group-hover:flex justify-center items-center  rounded-md text-black/40 hover:text-black/80 hover:border hover-border-black ",
+          {
+            "group-hover:hidden": closeTab.disable,
+          }
+        )}
+      >
+        <X strokeWidth={1} className="w-5 h-5" />
+      </span>
+      {text}
+    </>
+  );
+}
+
 function TabTriggerPlus({
   disable,
   title,
@@ -204,53 +252,6 @@ function TabTriggerPlus({
     >
       <Plus className="h-4 w-4" />
     </div>
-  );
-}
-
-function TabTriggerContent({
-  page,
-  text,
-  closeTab,
-}: {
-  page: PageData;
-  text: string;
-  closeTab: {
-    disable: boolean;
-    title: string;
-    onClose: () => void;
-  };
-}) {
-  const { fileData } = page;
-  return (
-    <>
-      <span
-        className={cn(
-          "group-hover:hidden w-5 h-5 flex flex-1 justify-center items-center"
-        )}
-      >
-        {fileData?.faviconUrl ? (
-          <img src={fileData?.faviconUrl} className="w-5 h-5" />
-        ) : (
-          <WorldHeroicon className="w-5 h-5 text-black/30" strokeWidth={1} />
-        )}
-      </span>
-      <span
-        title={closeTab.title}
-        onClick={e => {
-          e.stopPropagation();
-          closeTab.onClose();
-        }}
-        className={cn(
-          "w-5 h-5 cursor-pointer group-hover:flex justify-center items-center hidden rounded-md text-black/40 hover:text-black/80 hover:border hover-border-black ",
-          {
-            hidden: closeTab.disable,
-          }
-        )}
-      >
-        <X strokeWidth={1} className="w-5 h-5" />
-      </span>
-      {text}
-    </>
   );
 }
 
