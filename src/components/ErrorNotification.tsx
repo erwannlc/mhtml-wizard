@@ -9,8 +9,8 @@ interface ErrorAlert {
 
 export function ErrorNotification({ title, description }: ErrorAlert) {
   return (
-    <Alert variant="destructive">
-      <AlertCircle className="h-4 w-4" />
+    <Alert variant="destructive" className="mt-2">
+      <AlertCircle className="h-4 w-4 mt-2" />
       <AlertTitle>{title}</AlertTitle>
       <AlertDescription>{description}</AlertDescription>
     </Alert>

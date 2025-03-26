@@ -9,14 +9,7 @@ import { ErrorNotification } from "./ErrorNotification";
 import LoadingDots from "./loaders/LoadingDots";
 import { Info, WandSparkles } from "lucide-react";
 import { Alert, AlertDescription } from "./ui/alert";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from "./ui/card";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "./ui/card";
 
 export interface FileData {
   html: string;
@@ -106,8 +99,27 @@ export default function FileConverter({
           />
         </CardTitle>
         <CardDescription className="text-black/55">{FORMATS}</CardDescription>
+        <>
+          {error && <ErrorNotification title="Erreur" description={error} />}
+          {info && (
+            <Alert variant="default" className="mt-2">
+              <Info className="h-4 w-4" />
+              <AlertDescription className="block">
+                {INFO[0]}{" "}
+                <a
+                  target="_blank"
+                  href="https://github.com/gildas-lormeau/mhtml-to-html"
+                  className="text-accent-foreground"
+                >
+                  {INFO[1]}
+                </a>{" "}
+                {INFO[2]}
+              </AlertDescription>
+            </Alert>
+          )}
+        </>
       </CardHeader>
-      <CardContent className="p-0 mt-[1vmin] flex-1">
+      <CardContent className="p-0 flex-1">
         <label
           htmlFor="file"
           className="relative flex flex-col justify-center h-full md:min-h-[100px] border border-gray-200 z-50 cursor-pointer rounded-md group"
@@ -131,25 +143,6 @@ export default function FileConverter({
           onClick={e => e.stopPropagation()}
         />
       </CardContent>
-      <CardFooter className="p-0">
-        {error && <ErrorNotification title="Erreur" description={error} />}
-        {info && (
-          <Alert variant="default" className="bg-transparent border-transparent">
-            <Info className="h-4 w-4" />
-            <AlertDescription className="block">
-              {INFO[0]}{" "}
-              <a
-                target="_blank"
-                href="https://github.com/gildas-lormeau/mhtml-to-html"
-                className="text-accent-foreground"
-              >
-                {INFO[1]}
-              </a>{" "}
-              {INFO[2]}
-            </AlertDescription>
-          </Alert>
-        )}
-      </CardFooter>
     </Card>
   );
 }
