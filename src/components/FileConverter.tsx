@@ -7,7 +7,15 @@ import { convert } from "mhtml-to-html/browser";
 import { cn, parseFilename } from "@/lib/utils";
 import { ErrorNotification } from "./ErrorNotification";
 import LoadingDots from "./loaders/LoadingDots";
-import { WandSparkles } from "lucide-react";
+import { Info, WandSparkles } from "lucide-react";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "./ui/card";
 
 export interface FileData {
   html: string;
@@ -82,43 +90,47 @@ export default function FileConverter({
   }
 
   return (
-    <div className="shadow-converter bg-accent p-4 py-8 md:p-12 md:pb-16 w-full max-w-[36rem] rounded-md">
-      <form className="grid md:gap-8 gap-6 relative">
-        <div>
-          <div className="mb-12 mt-1">
-            <h2 className="md:text-xl text-lg font-semibold leading-7">{TITLE}</h2>
-            <p className="md:text-sm text-xs leading-5 text-converterGrey mt-1">
-              {FORMATS}
-            </p>
-          </div>
-
-          <label
-            htmlFor="file"
-            className="relative flex flex-col justify-center h-full md:min-h-[100px] border border-gray-200 z-50 cursor-pointer rounded-md group"
-            onClick={e => e.stopPropagation()}
-            onDragOver={e => onDrag(e, true)}
-            onDragEnter={e => onDrag(e, true)}
-            onDragLeave={e => onDrag(e, false)}
-            onDrop={onDrop}
-          >
-            <DragZone dragActive={dragActive} isLoading={loading} />
-          </label>
-
-          <input
-            id="file"
-            name="file"
-            type="file"
-            accept=".mht,.mhtml"
-            className="sr-only" // i.e. not visible
-            multiple
-            onChange={onInputChange}
-            onClick={e => e.stopPropagation()}
+    <Card className="shadow-xl bg-accent w-full h-full md:max-w-[70%] md:mt-[5dvh] md:mb-[5dvh] p-[5vmin] border-none rounded-md">
+      <CardHeader className="p-0">
+        <CardTitle className="md:text-xl text-lg flex items-baseline gap-2">
+          {TITLE}{" "}
+          <Info
+            className="h-4 w-4 cursor-pointer"
+            onClick={() => {
+              setError("");
+            }}
           />
-        </div>
+        </CardTitle>
+        <CardDescription className="text-black/55">{FORMATS}</CardDescription>
+      </CardHeader>
+      <CardContent className="p-0 mt-[1vmin] flex-1">
+        <label
+          htmlFor="file"
+          className="relative flex flex-col justify-center h-full md:min-h-[100px] border border-gray-200 z-50 cursor-pointer rounded-md group"
+          onClick={e => e.stopPropagation()}
+          onDragOver={e => onDrag(e, true)}
+          onDragEnter={e => onDrag(e, true)}
+          onDragLeave={e => onDrag(e, false)}
+          onDrop={onDrop}
+        >
+          <DragZone dragActive={dragActive} isLoading={loading} />
+        </label>
 
+        <input
+          id="file"
+          name="file"
+          type="file"
+          accept=".mht,.mhtml"
+          className="sr-only" // i.e. not visible
+          multiple
+          onChange={onInputChange}
+          onClick={e => e.stopPropagation()}
+        />
+      </CardContent>
+      <CardFooter className="p-0">
         {error && <ErrorNotification title="Erreur" description={error} />}
-      </form>
-    </div>
+      </CardFooter>
+    </Card>
   );
 }
 
