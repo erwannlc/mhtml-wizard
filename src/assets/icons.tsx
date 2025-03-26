@@ -28,33 +28,6 @@ export function LogoGithubOutline({
   );
 }
 
-export function CloudIcon({
-  className,
-  strokeWidth = 2,
-}: {
-  className: string;
-  strokeWidth?: number;
-}) {
-  return (
-    <svg
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={`${strokeWidth}`}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
-      <path d="M12 12v9"></path>
-      <path d="m16 16-4-4-4 4"></path>
-    </svg>
-  );
-}
-
 /** Provided by Heroicons
  * @see https://heroicons.com/
  */
