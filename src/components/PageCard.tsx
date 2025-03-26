@@ -32,12 +32,9 @@ export default function PageCard({ fileData, addPage, checkDuplicates, cancel }:
 
   return (
     <Card
-      className={cn(
-        "w-full h-full overflow-hidden flex justify-center items-center relative p-4",
-        {
-          "justify-start": fileData,
-        }
-      )}
+      className={cn("w-full h-full overflow-hidden items-center relative p-4", {
+        "justify-start": fileData,
+      })}
     >
       {fileData ? (
         <>
@@ -55,7 +52,7 @@ export default function PageCard({ fileData, addPage, checkDuplicates, cancel }:
               </div>
             </CardDescription>
           </CardHeader>
-          <CardContent className="relative w-full max-h-[80dvh] md:max-h-full flex flex-1 justify-center items-start shadow-xl p-0 rounded-sm">
+          <CardContent className="w-full max-h-[80dvh] md:max-h-full flex flex-1 justify-center items-start shadow-xl p-0 rounded-sm">
             {loading && (
               <Skeleton
                 className={
