@@ -111,7 +111,7 @@ export default function App() {
           />
           <h1 className="flex justify-center items-baseline gap-8 font-bold text-4xl w-full">
             {SITE_TITLE}
-            <a href={GITHUB_LINK} target="_blank">
+            <a href={GITHUB_LINK} target="_blank" title={"link to github repository"}>
               <Github className="w-[1.5rem] h-[1.5rem] hover:scale-110 transition-transform" />
             </a>
           </h1>
