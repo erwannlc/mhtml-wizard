@@ -5,9 +5,9 @@ import { useLanguage } from "@/LanguageContext";
 
 import { convert } from "mhtml-to-html/browser";
 import { cn, parseFilename } from "@/lib/utils";
-import { CloudIcon } from "@/assets/icons";
 import { ErrorNotification } from "./ErrorNotification";
 import LoadingDots from "./loaders/LoadingDots";
+import { WandSparkles } from "lucide-react";
 
 export interface FileData {
   html: string;
@@ -64,13 +64,13 @@ export default function FileConverter({
     setError(error);
   }
 
-  function onDrag(e: DragEvent<HTMLDivElement>, isActive: boolean) {
+  function onDrag(e: DragEvent<HTMLLabelElement>, isActive: boolean) {
     e.preventDefault();
     e.stopPropagation();
     setDragActive(isActive);
   }
 
-  function onDrop(e: DragEvent<HTMLDivElement>) {
+  function onDrop(e: DragEvent<HTMLLabelElement>) {
     onDrag(e, false);
     const files = e.dataTransfer.files;
     handleFile(files);
@@ -94,16 +94,13 @@ export default function FileConverter({
 
           <label
             htmlFor="file"
-            className="relative mt-4 flex flex-col justify-center h-40 md:h-72 rounded-md border-converterBorder transition-all duration-250 z-50 cursor-pointer hover:bg-converterHover hover:shadow-xs group"
+            className="relative flex flex-col justify-center h-full md:min-h-[100px] border border-gray-200 z-50 cursor-pointer rounded-md group"
             onClick={e => e.stopPropagation()}
+            onDragOver={e => onDrag(e, true)}
+            onDragEnter={e => onDrag(e, true)}
+            onDragLeave={e => onDrag(e, false)}
+            onDrop={onDrop}
           >
-            <div
-              className="absolute rounded-md w-full h-full z-5"
-              onDragOver={e => onDrag(e, true)}
-              onDragEnter={e => onDrag(e, true)}
-              onDragLeave={e => onDrag(e, false)}
-              onDrop={onDrop}
-            />
             <DragZone dragActive={dragActive} isLoading={loading} />
           </label>
 
@@ -136,11 +133,11 @@ function DragZone({
   return (
     <div
       className={cn(
-        "absolute flex flex-col justify-center items-center pl-10 pr-10 rounded-md w-full h-full transition-all z-3",
+        "absolute w-full h-full bg-white flex flex-col justify-center items-center gap-4 text-gray-500 inset-shadow-sm inset-shadow-accent rounded-md transition-all duration-250 z-3",
         {
-          "border-2 border-black": dragActive,
-          "bg-white/80": isLoading,
-          "bg-white opacity-100 hover:bg-converterHover": !isLoading,
+          "border-2 border-gray-500 text-gray-700 bg-gray-50": dragActive,
+          "group-hover:text-gray-700 hover:bg-gray-50 active:scale-98": !dragActive,
+          "bg-gray-50": isLoading,
         }
       )}
     >
@@ -148,17 +145,17 @@ function DragZone({
         <LoadingDots color="#808080" />
       ) : (
         <>
-          <CloudIcon
+          <WandSparkles
             className={cn(
-              "h-7 w-7 text-converterGrey transition-all duration-300 group-hover:scale-110 group-active:scale-95 scale-100",
+              "h-7 w-7 transition-all duration-250 origin-[20%_70%] scale-100",
               {
-                "scale: 110": dragActive,
+                "scale-110": dragActive,
+                "group-hover:scale-98 group-hover:animate-wiggle group-active:scale-95 group-active:rotate-25":
+                  !dragActive,
               }
             )}
           />
-          <p className="mt-2 text-sm leading-5 text-center text-converterGrey">
-            {INSTRUCTIONS}
-          </p>
+          <p className="mt-2 text-sm leading-5 text-center">{INSTRUCTIONS}</p>
           <span className="sr-only">{ACCESSIBILTY}</span>
         </>
       )}
