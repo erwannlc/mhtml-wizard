@@ -38,7 +38,7 @@ const CONVERT_FILE_EN = {
   },
   TITLE: "Convert MHTML files to HTML",
   FORMATS: "Accepted formats: .mht, .mhtml",
-  INSTRUCTIONS: "Drag & drop or click",
+  INSTRUCTIONS: "Drop files or click",
   ACCESSIBILTY: "Upload an MHTML file to convert it to HTML",
   CONFIRM: "Display",
   RESET: "Reset",
