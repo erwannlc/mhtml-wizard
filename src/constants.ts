@@ -13,7 +13,7 @@ const CONSTANT_FR = {
   INFO: [
     "Mthml Wizard utilise",
     "mhtml-to-html",
-    "pour convertir localement, dans votre navigateur, les fichiers mhtml en fichiers html standards.",
+    "pour convertir localement, dans votre navigateur, les fichiers mhtml en fichiers html uniques et autonomes.",
   ],
 };
 const CONSTANT_EN = {
@@ -26,7 +26,7 @@ const CONSTANT_EN = {
   INFO: [
     "Mthml Wizard uses",
     "mhtml-to-html library",
-    "to convert locally, in your browser, mhtml files to standard html files.",
+    "to convert locally, in your browser, mhtml files to standalone single html files.",
   ],
 };
 
@@ -38,7 +38,7 @@ const CONVERT_FILE_EN = {
   },
   TITLE: "Convert MHTML files to HTML",
   FORMATS: "Accepted formats: .mht, .mhtml",
-  INSTRUCTIONS: "Drop files or click",
+  INSTRUCTIONS: "Drop files here or click",
   ACCESSIBILTY: "Upload an MHTML file to convert it to HTML",
   CONFIRM: "Display",
   RESET: "Reset",
