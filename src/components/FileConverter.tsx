@@ -8,6 +8,7 @@ import { cn, parseFilename } from "@/lib/utils";
 import { ErrorNotification } from "./ErrorNotification";
 import LoadingDots from "./loaders/LoadingDots";
 import { Info, WandSparkles } from "lucide-react";
+import { Alert, AlertDescription } from "./ui/alert";
 import {
   Card,
   CardHeader,
@@ -32,10 +33,11 @@ export default function FileConverter({
   checkDuplicates: (filename: string) => boolean;
 }) {
   const [error, setError] = useState("");
+  const [info, setInfo] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const { TITLE, FORMATS, ERROR } = useLanguage();
+  const { TITLE, FORMATS, INFO, ERROR } = useLanguage();
 
   function handleFile(files: FileList | null) {
     setError("");
@@ -69,6 +71,7 @@ export default function FileConverter({
 
   function onError(error: string) {
     setLoading(false);
+    setInfo(false);
     setError(error);
   }
 
@@ -97,6 +100,7 @@ export default function FileConverter({
           <Info
             className="h-4 w-4 cursor-pointer"
             onClick={() => {
+              setInfo(b => !b);
               setError("");
             }}
           />
@@ -129,6 +133,22 @@ export default function FileConverter({
       </CardContent>
       <CardFooter className="p-0">
         {error && <ErrorNotification title="Erreur" description={error} />}
+        {info && (
+          <Alert variant="default" className="bg-transparent border-transparent">
+            <Info className="h-4 w-4" />
+            <AlertDescription className="block">
+              {INFO[0]}{" "}
+              <a
+                target="_blank"
+                href="https://github.com/gildas-lormeau/mhtml-to-html"
+                className="text-accent-foreground"
+              >
+                {INFO[1]}
+              </a>{" "}
+              {INFO[2]}
+            </AlertDescription>
+          </Alert>
+        )}
       </CardFooter>
     </Card>
   );
