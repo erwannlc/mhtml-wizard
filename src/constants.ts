@@ -41,7 +41,7 @@ const CONVERT_FILE_EN = {
   INSTRUCTIONS: "Drag & drop or click",
   ACCESSIBILTY: "Upload an MHTML file to convert it to HTML",
   CONFIRM: "Display",
-  CANCEL: "Cancel",
+  RESET: "Reset",
   SUBMITTING: "Converting file...",
 };
 const CONVERT_FILE_FR = {
@@ -55,7 +55,7 @@ const CONVERT_FILE_FR = {
   INSTRUCTIONS: "Cliquez ou glissez-déposez vos fichiers ici",
   ACCESSIBILTY: "Envoyer un ou plusieurs fichiers MHTML pour les convertir en HTML",
   CONFIRM: "Afficher",
-  CANCEL: "Annuler",
+  RESET: "Annuler",
   SUBMITTING: "Conversion du fichier en cours...",
 };
 

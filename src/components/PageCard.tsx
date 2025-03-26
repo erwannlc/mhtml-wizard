@@ -19,7 +19,7 @@ export interface Props extends Omit<PageData, "id" | "title"> {
 }
 
 export default function PageCard({ fileData, addPage, checkDuplicates, cancel }: Props) {
-  const { CANCEL, DOWNLOAD_HTML_FILE } = useLanguage();
+  const { RESET, DOWNLOAD_HTML_FILE } = useLanguage();
   const [loading, setLoading] = useState(true);
 
   async function handleDownload() {
@@ -43,7 +43,7 @@ export default function PageCard({ fileData, addPage, checkDuplicates, cancel }:
               <p className="text-sm font-light">{fileData?.filename}</p>
               <div className="flex flex-col md:flex-row gap-8">
                 <Button onClick={cancel} variant={"outline"} className="cursor-pointer">
-                  {CANCEL}
+                  {RESET}
                 </Button>
                 <Button onClick={handleDownload} className="cursor-pointer">
                   {DOWNLOAD_HTML_FILE}
