@@ -10,6 +10,11 @@ const CONSTANT_FR = {
   NEW_TAB: "Nouvel onglet",
   CLOSE_TAB: "Fermer l'onglet",
   DOWNLOAD_ALL_FILES: "Télécharger tous les fichiers",
+  INFO: [
+    "Mthml Wizard utilise",
+    "mhtml-to-html",
+    "pour convertir localement, dans votre navigateur, les fichiers mhtml en fichiers html standards.",
+  ],
 };
 const CONSTANT_EN = {
   SITE_TITLE,
@@ -18,6 +23,11 @@ const CONSTANT_EN = {
   NEW_TAB: "New tab",
   CLOSE_TAB: "Close tab",
   DOWNLOAD_ALL_FILES: "Download all files",
+  INFO: [
+    "Mthml Wizard uses",
+    "mhtml-to-html library",
+    "to convert locally, in your browser, mhtml files to standard html files.",
+  ],
 };
 
 const CONVERT_FILE_EN = {
@@ -28,7 +38,7 @@ const CONVERT_FILE_EN = {
   },
   TITLE: "Convert MHTML files to HTML",
   FORMATS: "Accepted formats: .mht, .mhtml",
-  INSTRUCTIONS: "Drag and drop or click to convert",
+  INSTRUCTIONS: "Drag & drop or click",
   ACCESSIBILTY: "Upload an MHTML file to convert it to HTML",
   CONFIRM: "Display",
   CANCEL: "Cancel",
@@ -40,9 +50,9 @@ const CONVERT_FILE_FR = {
     FILE_READ: "Un fichier n'a pas pu être lu",
     DUPLICATE_FILE: "Ce fichier a déjà été converti et se trouve dans les onglets",
   },
-  TITLE: "Convertissez des fichiers mhtml en html",
+  TITLE: "Convertissez vos fichiers mhtml en html",
   FORMATS: "Formats acceptés: .mht, .mhtml",
-  INSTRUCTIONS: "Cliquer ou glissez-déposer vos fichiers ici",
+  INSTRUCTIONS: "Cliquez ou glissez-déposez vos fichiers ici",
   ACCESSIBILTY: "Envoyer un ou plusieurs fichiers MHTML pour les convertir en HTML",
   CONFIRM: "Afficher",
   CANCEL: "Annuler",
